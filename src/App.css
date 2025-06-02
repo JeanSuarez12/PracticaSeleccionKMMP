@@ -1,0 +1,386 @@
+/* src/App.css */
+
+/* Estilo general */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Botones superiores */
+.refresh-container {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.refresh-container button,
+.refresh-container .export-link {
+  background: #607d8b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.refresh-container button:hover,
+.refresh-container .export-link:hover {
+  opacity: 0.9;
+}
+
+/* Contenedor Kanban: tres columnas en fila */
+.kanban-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Cada columna ocupa 30% del ancho, con scroll interno */
+.column {
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.column h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+/* Texto cuando no hay órdenes */
+.empty-text {
+  color: #888;
+  font-style: italic;
+}
+
+/* Tarjeta individual de OS */
+.order-card {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 10px 0;
+  padding: 10px;
+  text-align: left;
+}
+
+.order-header {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.order-status {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.stopped-badge {
+  background: #ff6961;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  margin-left: 10px;
+}
+
+.stop-reason {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.order-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.order-actions button {
+  flex: 1 1 auto;
+  padding: 5px 8px;
+  font-size: 11px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.order-actions button:hover {
+  opacity: 0.9;
+}
+
+/* Botones colores según acción */
+.order-actions button:nth-child(1) {
+  background: #4caf50; /* INICIAR / REANUDAR */
+  color: white;
+}
+
+.order-actions button:nth-child(2) {
+  background: #ff6961; /* STOP */
+  color: white;
+}
+
+.order-actions button:nth-child(3) {
+  background: #2196f3; /* FINALIZAR */
+  color: white;
+}
+
+.order-actions button:nth-child(4) {
+  background: #ffb74d; /* REPROGRAMAR */
+  color: white;
+}
+
+.done-label {
+  display: inline-block;
+  background: #9e9e9e;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+/* … estilos previos de App.css … */
+
+/* fuera del Kanban normal, definimos estilos para InProcessTabs */
+
+.inprocess-column {
+  /* Para que tenga la misma estética que las demás columnas */
+  padding: 0; /* quitamos algo si Column aplica padding extra */
+}
+
+.inprocess-tabs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Cabecera de pestañas: botones horizontales */
+.tabs-header {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 5px;
+  background-color: #eceff1;
+  border-bottom: 1px solid #ccc;
+}
+
+.tab-button {
+  background: #b0bec5;
+  color: #000;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+/* (añade dentro de .main-nav existing) */
+.main-nav button {
+  margin-right: 8px;
+}
+.tab-button.active {
+  background: #546e7a;
+  color: white;
+}
+
+.tab-button:hover {
+  opacity: 0.9;
+}
+
+/* Contenido de la pestaña */
+.tab-content {
+  padding: 10px;
+}
+
+/* Bloques de motivo */
+.reason-block {
+  margin-bottom: 8px;
+}
+
+.reason-block label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.reason-block select {
+  width: 100%;
+  padding: 6px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+/* Botones de STOP */
+.btn-stop-unplanned {
+  background-color: #ff7043;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.btn-stop-planned {
+  background-color: #ffca28;
+  color: #000;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.btn-resume {
+  background-color: #66bb6a;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+/* Botones finalizar y reprogramar */
+.final-reprog-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-finish {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-reprogram {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-finish:hover,
+.btn-reprogram:hover,
+.btn-stop-unplanned:hover,
+.btn-stop-planned:hover,
+.btn-resume:hover {
+  opacity: 0.9;
+}
+
+/* ------------------------------------ */
+/*  RESPONSIVE: Ajustes para pantallas pequeñas */
+/* ------------------------------------ */
+@media (max-width: 1024px) {
+  /* Para tablets horizontales y inferiores */
+  .kanban-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .column {
+    width: 90%;       /* Ocupa casi todo el ancho */
+    max-height: none; /* Permitimos scroll completo (no solo 75vh) */
+    margin-bottom: 20px;
+  }
+  .inprocess-column {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Para móviles */
+  .kanban-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .column {
+    width: 100%;      /* Ocupa 100% del ancho */
+    padding: 5px;     /* Reducimos padding para ahorrar espacio */
+    margin-bottom: 15px;
+  }
+  .tabs-header {
+    flex-wrap: wrap;  /* Que las tabs queden en varias líneas si faltan espacio */
+    padding: 2px;
+  }
+  .tab-button {
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+  }
+  .reason-block select {
+    font-size: 14px;
+  }
+  .new-order-form {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  .new-order-form h3 {
+    font-size: 16px;
+  }
+  .new-order-form label {
+    font-size: 13px;
+  }
+}
+
+/* -------------------- */
+/* Estilos para el header/nav general */
+/* -------------------- */
+header {
+  background: #37474f;
+  color: white;
+  padding: 12px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.main-nav {
+  margin-top: 10px;
+}
+
+.main-nav button {
+  background: #546e7a;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.main-nav button.active {
+  background: #cfd8dc;
+  color: #37474f;
+}
+
+.main-nav button:hover {
+  opacity: 0.9;
+}
