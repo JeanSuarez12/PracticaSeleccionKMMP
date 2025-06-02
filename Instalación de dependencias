@@ -1,0 +1,139 @@
+# =============================================================================
+# GUÍA COMPLETA DE INSTALACIÓN DE DEPENDENCIAS (BACKEND + FRONTEND)
+# Incluye todas las librerías 
+# =============================================================================
+
+# ---------------------------------------
+# 1) PREREQUISITOS GENERALES
+# ---------------------------------------
+
+# 1.1) Instalar PostgreSQL (12+)
+#      - En Windows: https://www.postgresql.org/download/windows/
+#      - En macOS: brew install postgresql
+#      - En Linux (Debian/Ubuntu): sudo apt-get update && sudo apt-get install postgresql postgresql-contrib
+#
+# 1.2) Asegurarse de que PostgreSQL esté corriendo y tener credenciales de un usuario (ej. "os_user")
+#      También verificar que la extensión "pgcrypto" esté disponible para tipos UUID, si la usas:
+#
+#      psql -U postgres
+#      CREATE USER os_user WITH PASSWORD 'TuPasswordSegura';
+#      CREATE DATABASE os_management_db OWNER os_user;
+#      \c os_management_db
+#      CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+#      \q
+#
+# 1.3) Instalar Node.js LTS (v16+)
+#      - Descarga desde https://nodejs.org/ (asegúrate de incluir npm en la instalación)
+#
+# =======================================================
+# 3) BACKEND – instalación de dependencias 
+# =======================================================
+
+cd backend
+
+# 3.1) Inicializar package.json (si aún no existe – solo la primera vez)
+# npm init -y
+
+# 3.2) Instalar dependencias principales:
+#      express: servidor HTTP
+#      sequelize: ORM
+#      pg, pg-hstore: driver de PostgreSQL para Sequelize
+#      nodemailer: para envío de correos
+#      dotenv: para leer variables de entorno desde .env
+npm install express sequelize pg pg-hstore nodemailer dotenv
+
+# 3.3) Instalar dependencias secundarias de Sequelize (si las necesitas en tu proyecto):
+#      bcrypt: para encriptar contraseñas (mencionado como paso futuro de autenticación)
+#      uuid: si se usa UUID en modelos (ej. User.id)
+npm install bcrypt uuid
+
+# 3.4) Instalar devDependencies:
+#      nodemon: reinicio automático en dev
+#      sequelize-cli (opcional, si piensas usar migraciones)
+npm install --save-dev nodemon sequelize-cli
+
+# 3.5) Verificar que el package.json tenga scripts:
+#    "scripts": {
+#      "start": "node src/app.js",
+#      "dev":   "nodemon src/app.js"
+#    }
+
+# 3.6) Crear archivo .env a partir de .env.example (ajusta con tus credenciales):
+cp .env.example .env
+
+# 3.7) (Opcional) Instalar globalmente sequelize-cli para usar migraciones:
+# npm install -g sequelize-cli
+
+# 3.8) Levantar el servidor backend en modo desarrollo:
+npm run dev
+
+#    Deberías ver algo como:
+#    [nodemon] starting `node src/app.js`
+#     Tablas sincronizadas con la base de datos.
+#     Servidor backend corriendo en http://localhost:4000
+
+# ================================
+# 4) FRONTEND – instalación completa
+# ================================
+
+# 4.1) Si aún no tienes el código React en la carpeta, créalo (solo la primera vez):
+#     (Sáltate este paso si ya existe frontend/ con package.json generado)
+#
+# cd ../frontend
+# npx create-react-app .
+# Nota: Si ya ves package.json y src/ en frontend/, ignora el create-react-app.
+
+cd ../frontend
+
+# 4.2) Instalar dependencias principales de React:
+#      axios: para llamadas HTTP
+#      react-router-dom: si quisieras rutas (mencionado en alternativas futuras)
+npm install axios react-router-dom
+
+# 4.3) Instalar librerías secundarias opcionales (según conversación):
+#      classnames: utilidades para condicionar clases CSS
+#      uuid: generar llaves únicas en front (ej. map keys)
+npm install classnames uuid
+
+# 4.4) Instalar devDependencies (si hace falta):
+#      eslint, prettier: para linteo y formateo de código
+npm install --save-dev eslint prettier
+
+# 4.5) Verificar que en package.json de frontend existan scripts:
+#    "scripts": {
+#      "start": "react-scripts start",
+#      "build": "react-scripts build",
+#      "test":  "react-scripts test",
+#      "eject": "react-scripts eject"
+#    }
+
+# 4.6) Levantar el servidor de desarrollo de React:
+npm start
+
+#    Esto abrirá automáticamente http://localhost:3000
+
+# =====================================================
+# 5) RESUMEN – comandos de copia/pegado para ambos entornos
+# =====================================================
+
+# 5.1) Clonar proyecto
+git clone https://github.com/tuUsuario/my-os-management.git
+cd my-os-management
+
+# 5.2) Backend
+cd backend
+npm install express sequelize pg pg-hstore nodemailer dotenv
+npm install bcrypt jsonwebtoken uuid
+npm install --save-dev nodemon sequelize-cli
+cp .env.example .env
+npm run dev
+
+# 5.3) Frontend (en otra terminal)
+cd ../frontend
+# (si no existe, primero: npx create-react-app .)
+npm install axios react-router-dom
+npm install classnames uuid
+npm install --save-dev eslint prettier
+npm start
+
+# -----------------------------------------------------
