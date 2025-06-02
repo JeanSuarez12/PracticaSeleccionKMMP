@@ -11,7 +11,7 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT, 10),
     dialect: 'postgres',
-    logging: false, // Desactiva logs SQL en consola
+    logging: false, // Desactiva los logs SQL en consola
   }
 );
 
