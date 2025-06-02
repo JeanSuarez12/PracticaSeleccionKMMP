@@ -1,4 +1,3 @@
-// src/models/ReprogramLog.js
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../config/database.js';
 import Order from './Order.js';

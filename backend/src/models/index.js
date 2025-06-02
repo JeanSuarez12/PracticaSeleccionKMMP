@@ -1,4 +1,3 @@
-// src/models/index.js
 import sequelize from '../config/database.js';
 import Role from './Role.js';
 import User from './User.js';
@@ -11,9 +10,9 @@ import DistributionList from './DistributionList.js';
 const syncDatabase = async () => {
   try {
     await sequelize.sync({ force: true });
-    console.log('✅ Tablas recreadas y sincronizadas con la base de datos.');
+    console.log('Tablas recreadas y sincronizadas con la base de datos.');
   } catch (error) {
-    console.error('❌ Error al sincronizar tablas:', error);
+    console.error('Error al sincronizar tablas:', error);
   }
 };
 

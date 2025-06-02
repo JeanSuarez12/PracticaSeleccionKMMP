@@ -1,4 +1,3 @@
-// src/controllers/userController.js
 import { User, Role } from '../models/index.js';
 
 // Listar todos los usuarios (con su rol)

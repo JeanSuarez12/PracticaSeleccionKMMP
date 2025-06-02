@@ -1,4 +1,3 @@
-// src/test-db.cjs
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 

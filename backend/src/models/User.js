@@ -1,4 +1,3 @@
-// src/models/User.js
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../config/database.js';
 import Role from './Role.js';

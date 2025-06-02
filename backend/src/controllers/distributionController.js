@@ -1,4 +1,3 @@
-// src/controllers/distributionController.js
 import DistributionList from '../models/DistributionList.js';
 
 // Listar todos los registros de distribución

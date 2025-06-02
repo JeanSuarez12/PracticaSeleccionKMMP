@@ -1,4 +1,3 @@
-// src/routes/distributionRoutes.js
 import express from 'express';
 import {
   getAllDistributions,
