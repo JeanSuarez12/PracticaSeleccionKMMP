@@ -87,15 +87,15 @@ cd ../frontend
 
 # 4.2) Instalar dependencias principales de React:
 #      axios: para llamadas HTTP
-#      react-router-dom: si quisieras rutas (mencionado en alternativas futuras)
+#      react-router-dom: si quisieras rutas 
 npm install axios react-router-dom
 
-# 4.3) Instalar librerías secundarias opcionales (según conversación):
+# 4.3) Instalar librerías secundarias opcionales :
 #      classnames: utilidades para condicionar clases CSS
 #      uuid: generar llaves únicas en front (ej. map keys)
 npm install classnames uuid
 
-# 4.4) Instalar devDependencies (si hace falta):
+# 4.4) Instalar devDependencies :
 #      eslint, prettier: para linteo y formateo de código
 npm install --save-dev eslint prettier
 
@@ -115,10 +115,6 @@ npm start
 # =====================================================
 # 5) RESUMEN – comandos de copia/pegado para ambos entornos
 # =====================================================
-
-# 5.1) Clonar proyecto
-git clone https://github.com/tuUsuario/my-os-management.git
-cd my-os-management
 
 # 5.2) Backend
 cd backend
