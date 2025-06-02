@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState } from 'react';
 import KanbanBoard from './components/KanbanBoard';
 import UserManagement from './components/UserManagement';

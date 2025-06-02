@@ -1,11 +1,9 @@
-// src/components/KanbanBoard.jsx
 import React, { useEffect, useState } from 'react';
 import Column from './Column';
 import InProcessTabs from './InProcessTabs';
 import {
   getApprovedOrders,
   startOrder,
-  // ya no necesitamos stop/resume/etc. aquí, pues se delegan a InProcessTabs
 } from '../services/orderService';
 import '../App.css';
 

@@ -1,4 +1,3 @@
-// src/components/OrderCard.jsx
 import React from 'react';
 
 const OrderCard = ({ order, onStart, onStop, onResume, onFinish, onReprogram }) => {
